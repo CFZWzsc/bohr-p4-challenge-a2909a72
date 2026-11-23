@@ -1,0 +1,19 @@
+{
+  "field_weights": {"title": 3.0, "keywords": 2.0, "abstract": 1.0},
+  "decision_thresholds": {"direct": 0.45, "indirect": 0.22},
+  "max_queries": 3,
+  "synonyms": {
+    "pyroptosis": ["pyroptotic", "inflammasome", "gasdermin"],
+    "crispr": ["cas9", "genome editing", "gene editing"],
+    "cancer": ["tumor", "tumour", "neoplasm", "malignancy"],
+    "machine learning": ["deep learning", "neural network", "artificial intelligence"],
+    "meta-analysis": ["systematic review", "pooled analysis"],
+    "biomarker": ["marker", "predictor", "signature"],
+    "single-cell": ["scrna-seq", "single cell sequencing"],
+    "drug resistance": ["resistance", "refractory", "treatment failure"],
+    "immunotherapy": ["immune checkpoint", "pd-1", "pd-l1", "car-t"],
+    "microbiome": ["microbiota", "gut flora", "16s rrna"],
+    "alzheimer": ["dementia", "amyloid", "tau"],
+    "protein structure": ["cryo-em", "alphafold", "structural biology"]
+  }
+}
