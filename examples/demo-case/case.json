@@ -1,0 +1,55 @@
+{
+  "demo": true,
+  "synthetic": true,
+  "case_id": "demo-a2909a72-nlrp3-saki",
+  "note": "Synthetic, self-contained demo case. Candidate records, DOIs (10.0000/...) and findings are fabricated for testing only.",
+  "question": "Does NLRP3 inflammasome activation predict acute kidney injury in patients with sepsis?",
+  "inclusion_criteria": ["acute kidney injury", "sepsis", "NLRP3"],
+  "exclusion_criteria": ["editorial", "protocol"],
+  "year_range": [2015, 2024],
+  "candidates": [
+    {
+      "paper_id": "c1",
+      "title": "NLRP3 inflammasome activation predicts acute kidney injury in sepsis",
+      "abstract": "In a prospective cohort of 120 patients with sepsis, NLRP3 inflammasome activation was associated with subsequent acute kidney injury.",
+      "year": 2019,
+      "doi": "10.0000/demo.p1",
+      "journal": "Kidney International"
+    },
+    {
+      "paper_id": "c2",
+      "title": "Gasdermin D and pyroptosis in septic acute kidney injury",
+      "abstract": "Gasdermin D cleavage and tubular pyroptosis were measured in sepsis-associated acute kidney injury.",
+      "year": 2021,
+      "doi": "10.0000/demo.p2",
+      "journal": "Journal of the American Society of Nephrology"
+    },
+    {
+      "paper_id": "c3",
+      "title": "Editorial: rethinking biomarkers in critical illness",
+      "abstract": "This editorial comments on biomarker research in critical illness and calls for better reporting.",
+      "year": 2018,
+      "doi": "10.0000/demo.p3",
+      "journal": "Critical Care"
+    },
+    {
+      "paper_id": "c4",
+      "title": "Renal replacement therapy scheduling in the intensive care unit",
+      "abstract": "A trial comparing early versus late renal replacement therapy in critically ill adults.",
+      "year": 2016,
+      "doi": "10.0000/demo.p4",
+      "journal": "New England Journal of Medicine"
+    }
+  ],
+  "output_contract": {
+    "case_id": "string",
+    "status": "string",
+    "question": "string",
+    "queries": "array",
+    "candidates": "array",
+    "ranked_results": "array",
+    "evidence": "array",
+    "coverage": "object",
+    "metrics": "object"
+  }
+}
