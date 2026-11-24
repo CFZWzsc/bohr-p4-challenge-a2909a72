@@ -75,6 +75,18 @@ description: 当科研任务给出研究问题或主题、并提供候选文献�
 - 评分不是同行评审结论，不评价研究质量、偏倚或统计正确性。
 - 无法验证输入记录本身的真实性；如输入元数据自相矛盾，记入 `uncertainties` 而不擅自更正。
 
+## Quickstart
+
+在仓库根目录 `bohrium-competition` 执行（PowerShell）：
+
+```powershell
+python -B "tracks\literature-search\challenges\challenge-a2909a72\06_code\submission\scripts\run_skill.py" --case "tracks\literature-search\challenges\challenge-a2909a72\06_code\submission\examples\demo-case\case.json" --output "$env:TEMP\demo_a2909a72\result.json"
+```
+
+- 示例输入：`examples/demo-case/case.json`，合成且自包含（`"demo": true`，4 条候选记录，含 1 条编辑述评与 1 条无关 RCT；DOI 均为虚构的 `10.0000/...`）。
+- **已知缺陷（当前脚本，未修复）**：`main()` 在 `os.environ["SK_RESULT_PATH"] = str(args.out)` 处引用了不存在的 `args.out`（`--output/--out` 解析后的属性名是 `args.output`）。因此上面的命令退出码为 0，却不会写入 `--output` 指定路径，只在当前工作目录留下 `{"status": "partial", "error": "AttributeError"}` 错误桩。对同一输入直接调用 `build_result()` 可得到 `status = "ok"`，且 `case_id`、`status`、`question`、`queries`、`candidates`、`ranked_results`、`evidence`、`coverage`、`metrics` 全部存在且非 null，说明示例输入本身合法，故障仅在这一行 CLI 接线。
+- 该用例只验证脚本可执行与输出契约齐全，不代表真实检索或排序质量。
+
 ## 最小调用示例（示例，非官方案例结果）
 
 输入 `/app/work/example_case.json`（**示例数据，仅示意接口**）：
