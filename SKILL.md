@@ -146,3 +146,10 @@ python /skills/weekly-skill/scripts/run_skill.py \
 4. 自检：`case_id` 与输入一致；`output_contract` 每个字段落位；`status` 取 `ok` / `partial` / `empty` / `error`；每条结果有 `source_locator` 与真实短引。
 5. 输入缺失、JSON 损坏或字段异常时仍写出结构化结果并说明缺口，不崩溃、不静默成功。
 6. 交付物仅包含本题要求的检索结果集、查询计划、排序依据与证据；不得以无关赛道的产物（正文、译文、幻灯片、实验方案等）充数。
+
+## 运行时产物（单次运行自动写出）
+
+入口脚本在写 `result.json` 的同一次运行里还会写出：`report.md`（人读报告，每条带源定位）、
+`provenance.json`（条目 → 来源定位映射）、`records.csv`（平面结果表）、
+`validation.json`（自检项）。`output_contract` 中的产物类字段直接指向这些文件，
+无需第二次运行或人工补写。
