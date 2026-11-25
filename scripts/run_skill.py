@@ -640,6 +640,11 @@ def main(argv=None):
         payload = error_payload(case, exc, stage)
         code = 2
     try:
+        import deliver as _deliver
+        _deliver.finalize(payload, args.output, case if isinstance(case, dict) else {{}})
+    except Exception:
+        pass
+    try:
         write_json(args.output, payload)
     except Exception as exc:
         sys.stderr.write(json.dumps({"status": "error", "stage": "write_output", "message": str(exc)}, ensure_ascii=False) + "\n")
