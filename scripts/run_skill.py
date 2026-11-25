@@ -596,14 +596,14 @@ def build_result(case, args):
     return apply_contract(result, case)
 
 
-def error_payload(case, exc, args):
-    case_id = ""
+def error_payload(case, exc, stage="load_case"):
+    case_id = None
     if isinstance(case, dict):
-        case_id = str(case.get("case_id") or case.get("id") or "")
+        case_id = case.get("case_id") or case.get("id") or None
     payload = {
         "case_id": case_id,
         "status": "error",
-        "error": {"type": type(exc).__name__, "message": str(exc)[:500], "stage": "build_result"},
+        "error": {"type": type(exc).__name__, "message": str(exc)[:500], "stage": stage},
         "candidates": [],
         "results": [],
         "ranked_results": [],
@@ -628,14 +628,16 @@ def main(argv=None):
     if args.rules:
         RULES_PATH = Path(args.rules)
     case = {}
+    stage = "load_case"
     try:
         case = load_json(args.case)
         if not isinstance(case, dict):
             raise ValueError("case.json root is not an object")
+        stage = "build_result"
         payload = build_result(case, args)
         code = 0
     except Exception as exc:  # structured failure, never a bare traceback
-        payload = error_payload(case, exc, args)
+        payload = error_payload(case, exc, stage)
         code = 2
     try:
         write_json(args.output, payload)
